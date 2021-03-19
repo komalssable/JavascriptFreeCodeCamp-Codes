@@ -1,18 +1,15 @@
-var numeralCodes = [
-    ["","I","II","III","IV","V","VI","VII","VIII","IX"],       
-    ["","X","XX","XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"],   
-    ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"],
-    ["","M","MM","MMM","MV"]];     
-    
-    
-    function convertToRoman(num) {
-      
-    var number="";
-    var digits=num.toString().split('').reverse();
-    for(var i=0;i<digits.length;i++)
-      number=numeralCodes[i][parseInt(digits[i])] + number;
-      return number;            
-     
-    }
-    
-    convertToRoman(36);
+function convertRoman(num) {
+	var digits = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+	var romanNumber = ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
+	var roman='';
+
+	for(let i=0;i<digits.length;i++) {
+		while (digits[i] <= num) {
+			roman +=romanNumber[i];
+			num-=digits[i];
+		}
+	}
+	return roman;
+}
+
+convertRoman(3000);
